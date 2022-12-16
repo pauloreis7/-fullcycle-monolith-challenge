@@ -1,10 +1,10 @@
 import Id from "../../../@shared/domain/value-object/id.value-object";
-import Adress from "../../domain/address.value-object";
+import Address from "../../domain/address.value-object";
 import Invoice from "../../domain/invoice.entity";
-import Product from "../../domain/product.entity";
+import OrderItem from "../../domain/order-item.entity";
 import FindInvoiceUseCase from "./find-invoice.usecase";
 
-const address = new Adress({
+const address = new Address({
   street: "street example",
   number: "number example",
   complement: "complement example",
@@ -13,7 +13,7 @@ const address = new Adress({
   zipCode: "zipCode example",
 });
 
-const product = new Product({
+const orderItem = new OrderItem({
   name: "Product 1",
   price: 10,
 });
@@ -23,7 +23,7 @@ const invoice = new Invoice({
   name: "Invoice 1",
   document: "document example",
   address,
-  items: [product],
+  items: [orderItem],
 });
 
 const MockRepository = () => {
@@ -55,9 +55,9 @@ describe("Find Invoice Usecase unit test", () => {
     expect(result.address.street).toEqual(invoice.address.street);
     expect(result.address.zipCode).toEqual(invoice.address.zipCode);
     expect(result.items).toHaveLength(1);
-    expect(result.items[0].id).toBe(product.id.id);
-    expect(result.items[0].name).toBe(product.name);
-    expect(result.items[0].price).toBe(product.price);
+    expect(result.items[0].id).toBe(orderItem.id.id);
+    expect(result.items[0].name).toBe(orderItem.name);
+    expect(result.items[0].price).toBe(orderItem.price);
     expect(result.total).toEqual(invoice.total);
     expect(result.createdAt).toEqual(invoice.createdAt);
   });

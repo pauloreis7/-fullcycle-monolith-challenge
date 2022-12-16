@@ -1,6 +1,6 @@
 import Id from "../../../@shared/domain/value-object/id.value-object";
-import Adress from "../../domain/address.value-object";
-import Product from "../../domain/product.entity";
+import Address from "../../domain/address.value-object";
+import OrderItem from "../../domain/order-item.entity";
 import Invoice from "../../domain/invoice.entity";
 import InvoiceGateway from "../../gateway/invoice.gateway";
 import {
@@ -27,22 +27,22 @@ export default class GenerateInvoiceUseCase {
       zipCode: input.zipCode,
     };
 
-    const products = input.items.map(
+    const items = input.items.map(
       (item) =>
-        new Product({
+        new OrderItem({
           id: new Id(item.id),
           name: item.name,
           price: item.price,
         })
     );
 
-    const address = new Adress(addressProps);
+    const address = new Address(addressProps);
 
     const invoiceProps = {
       name: input.name,
       document: input.document,
       address,
-      items: products,
+      items,
     };
 
     const invoice = new Invoice(invoiceProps);

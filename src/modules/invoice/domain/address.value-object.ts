@@ -1,6 +1,6 @@
 import ValueObject from "../../@shared/domain/value-object/value-object.interface";
 
-interface AdressProps {
+interface AddressProps {
   street: string;
   number: string;
   complement: string;
@@ -9,7 +9,7 @@ interface AdressProps {
   zipCode: string;
 }
 
-export default class Adress implements ValueObject {
+export default class Address implements ValueObject {
   private _street: string;
   private _number: string;
   private _complement: string;
@@ -17,7 +17,7 @@ export default class Adress implements ValueObject {
   private _state: string;
   private _zipCode: string;
 
-  constructor(props: AdressProps) {
+  constructor(props: AddressProps) {
     this._street = props.street;
     this._number = props.number;
     this._complement = props.complement;

@@ -7,7 +7,7 @@ interface ProductProps {
   price: number;
 }
 
-export default class Product extends BaseEntity {
+export default class OrderItem extends BaseEntity {
   private _name: string;
   private _price: number;
 
