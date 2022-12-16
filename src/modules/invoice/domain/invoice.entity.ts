@@ -27,6 +27,10 @@ export default class Invoice extends BaseEntity implements AggregateRoot {
     this._document = props.document;
     this._address = props.address;
     this._items = props.items;
+
+    if (!props.name || !props.document || !props.address || !props.items) {
+      throw new Error("missing invoice properties!");
+    }
   }
 
   get name(): string {

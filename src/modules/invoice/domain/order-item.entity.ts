@@ -16,6 +16,10 @@ export default class OrderItem extends BaseEntity {
 
     this._name = props.name;
     this._price = props.price;
+
+    if (!props.name || !props.price) {
+      throw new Error("missing order item properties!");
+    }
   }
 
   get name(): string {

@@ -24,6 +24,17 @@ export default class Address implements ValueObject {
     this._city = props.city;
     this._state = props.state;
     this._zipCode = props.zipCode;
+
+    if (
+      !props.street ||
+      !props.number ||
+      !props.complement ||
+      !props.city ||
+      !props.state ||
+      !props.zipCode
+    ) {
+      throw new Error("missing invoice address properties!");
+    }
   }
 
   get street(): string {

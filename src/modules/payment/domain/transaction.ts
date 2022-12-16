@@ -28,6 +28,10 @@ export default class Transaction extends BaseEntity implements AggregateRoot {
     if (this._amount <= 0) {
       throw new Error("Amount must be greater than 0");
     }
+
+    if (!this.amount || !this.orderId) {
+      throw new Error("missing transaction properties!");
+    }
   }
 
   approve(): void {
