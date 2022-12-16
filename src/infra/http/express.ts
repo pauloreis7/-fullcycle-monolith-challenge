@@ -7,10 +7,13 @@ import { ProductModel } from "../../modules/product-adm/repository/product.model
 import StoreProductModel from "../../modules/store-catalog/repository/product.model";
 import OrderItem from "../../modules/invoice/repository/order-item.model";
 import TransactionModel from "../../modules/payment/repository/transaction.model";
+import { productsRouter } from "./routes/products.routes";
 
 export const app: Express = express();
 
 app.use(express.json());
+
+app.use("/products", productsRouter);
 
 export let sequelize: Sequelize;
 
@@ -24,7 +27,6 @@ async function setupDb() {
     ClientModel,
     InvoiceModel,
     ProductModel,
-    StoreProductModel,
     OrderItem,
     TransactionModel,
   ]);

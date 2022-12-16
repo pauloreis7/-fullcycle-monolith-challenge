@@ -24,6 +24,15 @@ export default class Product extends BaseEntity implements AggregateRoot {
     this._description = props.description;
     this._purchasePrice = props.purchasePrice;
     this._stock = props.stock;
+
+    if (
+      !props.name ||
+      !props.description ||
+      !props.purchasePrice ||
+      !props.stock
+    ) {
+      throw new Error("missing product properties!");
+    }
   }
 
   get name(): string {
