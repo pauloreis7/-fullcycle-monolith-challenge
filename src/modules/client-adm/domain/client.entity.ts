@@ -21,6 +21,10 @@ export default class Client extends BaseEntity implements AggregateRoot {
     this._name = props.name;
     this._email = props.email;
     this._address = props.address;
+
+    if (!props.name || !props.email || !props.address) {
+      throw new Error("missing client properties!");
+    }
   }
 
   get name(): string {
