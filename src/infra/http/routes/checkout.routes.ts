@@ -30,7 +30,7 @@ checkoutRouter.post("/", async (req: Request, res: Response) => {
 
     const invoiceOutput = await invoiceFacade.generate(invoiceDto);
 
-    res.send({ paymentOutput, invoiceOutput });
+    res.send({ ...paymentOutput, ...invoiceOutput });
   } catch (err) {
     res.status(500).send(err);
   }

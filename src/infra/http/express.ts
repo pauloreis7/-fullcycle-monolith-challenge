@@ -9,6 +9,7 @@ import TransactionModel from "../../modules/payment/repository/transaction.model
 import { productsRouter } from "./routes/products.routes";
 import { clientsRouter } from "./routes/clients.routes";
 import { checkoutRouter } from "./routes/checkout.routes";
+import { invoicesRouter } from "./routes/invoices.routes";
 
 export const app: Express = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/products", productsRouter);
 app.use("/clients", clientsRouter);
 app.use("/checkout", checkoutRouter);
+app.use("/invoices", invoicesRouter);
 
 export let sequelize: Sequelize;
 
